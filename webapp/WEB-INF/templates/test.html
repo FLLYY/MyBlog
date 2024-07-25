@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Page</title>
+    <!-- 这里可以引入你的样式表和其他资源 -->
+</head>
+<body>
+
+<h1>Content List</h1>
+
+<div th:if="${content != null}">
+    <ul>
+        <!-- 使用 Thymeleaf 的循环来遍历内容列表 -->
+        <li th:each="item : ${content}">
+            <!-- 在每个列表项中显示内容的标题和其他属性 -->
+            <p th:text="${item.title}"></p>
+            <p th:text="${item.description}"></p>
+            <!-- 如果需要显示更多属性，可以继续添加 -->
+        </li>
+    </ul>
+</div>
+
+<h2>更新内容</h2>
+<form id="updateContentForm" action="/updateContent" method="post">
+    <input type="hidden" name="cid" value="1"> <!-- 隐藏字段，用于传递 cid -->
+
+    <label for="cgid">分类ID：</label>
+    <input type="text" id="cgid" name="cgid"><br>
+
+    <label for="title">标题：</label>
+    <input type="text" id="title" name="title"><br>
+
+    <label for="slug">Slug：</label>
+    <input type="text" id="slug" name="slug"><br>
+
+    <label for="createdTime">创建时间：</label>
+    <input type="text" id="createdTime" name="createdTime"><br>
+
+    <label for="modifiedTime">修改时间：</label>
+    <input type="text" id="modifiedTime" name="modifiedTime"><br>
+
+    <label for="contentOrder">内容顺序：</label>
+    <input type="text" id="contentOrder" name="contentOrder"><br>
+
+    <label for="authorId">作者ID：</label>
+    <input type="text" id="authorId" name="authorId"><br>
+
+    <label for="contentType">内容类型：</label>
+    <input type="text" id="contentType" name="contentType"><br>
+
+    <label for="contentStatus">内容状态：</label>
+    <input type="text" id="contentStatus" name="contentStatus"><br>
+
+    <label for="password">密码：</label>
+    <input type="text" id="password" name="password"><br>
+
+    <label for="views">浏览量：</label>
+    <input type="text" id="views" name="views"><br>
+
+    <label for="tagList">标签列表：</label>
+    <input type="text" id="tagList" name="tagList"><br>
+
+    <label for="contentText">内容文本：</label><br>
+    <textarea id="contentText" name="contentText" rows="4" cols="50"></textarea><br>
+
+    <label for="thumb">缩略图：</label><br>
+    <textarea id="thumb" name="thumb" rows="4" cols="50"></textarea><br>
+
+    <label for="description">描述：</label><br>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
+
+    <input type="submit" value="提交">
+</form>
+
+
+<div th:if="${content == null}">
+    <p>No content available.</p>
+</div>
+
+</body>
+</html>
